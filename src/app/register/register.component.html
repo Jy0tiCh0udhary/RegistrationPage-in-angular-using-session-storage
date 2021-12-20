@@ -1,0 +1,115 @@
+
+ 
+  <div class="card-body">  
+    
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+         <div class="form-group">  
+            <label for="firstName"> Name</label>  
+            <input formControlName="name" id="name" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">  
+            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">  
+                <div *ngIf="f.name.errors?.required">First Name is required.</div>  
+                <div *ngIf="f.name.errors?.pattern">Please, Enter only alphabets in Name.</div> 
+               
+            </div>  
+        </div>    
+
+        <div class="form-group">  
+            <label for="firstName"> Address</label>  
+            <input formControlName="address" id="address" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }">  
+            <div *ngIf="f.address.touched && f.address.invalid" class="alert alert-danger">  
+                <div *ngIf="f.address.errors?.required">Address is required.</div>  
+                
+            </div>  
+        </div> 
+        
+        
+        <div class="form-group ">   
+            <label for="company">Country</label>  
+            <select  class="form-control"  formControlName="country" (change)="onSelect($any($event.target).value)" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">  
+                    <option value="">--Select--</option>  
+                    <option *ngFor="let count of country" value={{count.name}}>  
+                        {{count.name}} 
+                    </option>  
+            </select>  
+            <div *ngIf="f.country.touched && f.country.invalid" class="alert alert-danger"> 
+                <div *ngIf="f.country.errors?.required">Country is required</div> 
+            </div> 
+        </div>  
+        <div class="form-group">   
+        
+            <label for="company">City</label>  
+            <select  class="form-control" formControlName="capital">  
+                        <option value="">--Select--</option>  
+                        <option *ngFor="let city of capital" value={{city}}>  
+                            {{city}} 
+                        </option>  
+            </select>  
+            <div *ngIf="f.capital.touched && f.capital.invalid" class="alert alert-danger"> 
+                <div *ngIf="f.capital.errors?.required">City is required</div> 
+            </div>
+        </div>   
+
+        
+           
+    
+          <br><br>
+          <div class="text-center">
+              <button class="btn btn-primary mr-1">Register</button>
+             
+          </div> 
+      </form>
+      
+    
+</div> 
+
+
+
+
+<!-- <div class="form-row">
+    <label>Name</label>
+    <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required"> Name is required</div>
+        <div *ngIf="f.name.errors.pattern">Please, Enter only alphabets in Name.</div> 
+    </div>
+</div> 
+<div class="form-row">
+    <label>Address</label>
+    <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+        <div *ngIf="f.address.errors.required">Address is required</div>
+    </div>
+</div>
+
+<div class="form-group ">   
+    <label for="company">Country</label>  
+    <select  class="form-control"  formControlName="country" (change)="onSelect($any($event.target).value)" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">  
+            <option value="">--Select--</option>  
+            <option *ngFor="let count of country" value={{count.name}}>  
+                {{count.name}} 
+            </option>  
+    </select>  
+    <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+        <div *ngIf="f.country.errors?.required">State is required</div> 
+    </div> 
+</div>  
+<div class="form-group">   
+
+    <label for="company">City</label>  
+    <select  class="form-control" formControlName="capital">  
+                <option value="">--Select--</option>  
+                <option *ngFor="let city of capital" value={{city.name}}>  
+                    {{city.name}} 
+                </option>  
+    </select>  
+</div>  
+
+ -->
+
+
+
+
+
+
+
